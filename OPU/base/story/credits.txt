@@ -1,0 +1,98 @@
+Director
+   Patrick Cook
+Game Design
+   Patrick Cook and L. Allen McPheeters
+     
+Lead Programmer
+   Dan Duncalf 
+Programming
+   Dan White
+   Brian Apgar
+   David Sandgathe
+Additional Programming Support
+   Glenn Wallace
+     
+Art Directors
+   Mike Jahnke
+   Shawn Sharp
+Production Artists
+   Neal Skorpen
+   Weston Tracy
+   David Downing
+   Douglas Brashear
+   K. Maren Wyatt
+Additional Artwork
+   Ti-Ning Kwa
+   Robert Smith
+   Russell Stoner
+   Thomas J. M. Burton
+   James V. Anderson
+   Andrew Holder
+   Jared Keller
+3-D Artists
+   Gerald Harrison
+   Derrick Carlin
+Additional 3-D Artwork
+   Peter Lewis
+   Cyrus Kanga
+Art Coordination
+   J. D. Alley
+   Doug Kelly
+     
+Original Music
+   Charles Barth 
+Sound Effects
+   LOUDMOUTH, Inc. 
+Savant Computer Voice
+   Kathy Cullis
+     
+Quality Assurance Manager
+   David Steele 
+Lead QA Engineer
+   M. Andrew Binder 
+Assistant Lead QA Analyst
+   Trish Bayless
+QA Analysts
+   Jesse Russell 
+   Joe Rush
+   Aaron Anderson
+   Matthew Vincent
+   Solomon Sliwinski
+   Jerome Kluth
+   John Wolf
+   Jackson T. Snellings
+   Robert Quattrone, Jr.
+   Darion Lowenstein
+   Joe McGuire
+   Eric T. Lanz
+   Justin J. Hardy
+   Connor M. A. Salisbury
+   Sage Freeman 
+   Will Shaver
+   Kenn Smith
+   John Alden
+   David Otter Peterson
+   Brandon Franklin
+   Garrett Turner
+QA Media Technicians
+   Trevor Lanz
+   Sage Freeman
+QA Technician
+   John Wolf
+     
+Multimedia Support
+   Jim Carey
+   David Aughenbaugh
+   Kate Alley
+     
+Producer
+   Kate Kloos
+     
+Online and Print Manual
+   L. Allen McPheeters 
+Online and Print Manual Layout
+   Michael Stearns 
+Online and Print Manual Editing
+   Lynne Ertle 
+Background Story Author
+   J. Steven York

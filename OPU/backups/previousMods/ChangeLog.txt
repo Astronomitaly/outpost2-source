@@ -1,0 +1,165 @@
+Outpost 2 Changelog & Known Bugs
+--------------------------------
+
+Known Bugs
+----------
+
+* Menus on title screen occasionally do not appear
+	- only a single horizontal red line appears at top of menu with rest of menu nonexistent.
+	- Menu is still clickable even though it isn't being drawn.
+	- Typically clicking until managing to open a different menu will restore proper behavior.
+
+* Starting building construction without committing the ConVec or structure kit
+	- If interrupting the ConVec on the exact right frame, the building will start construction without tying up the ConVec. The structure kit will remain in the ConVec.
+
+* Sometimes the structure build overlay (cyan for building, yellow for tubes) persists after moving the build overlay to another part of the map. When day/night progression forces an update to the strength of the shadow overlay, the persisting building overlay will disappear. Seems tied to specific hardware configuration.
+
+* Gameplay has been reported choppy on some modern computers. Possibly tied to specific CPU/GPU hardware. The issue has been reported as resolved by starting a game, going to preferences, and turning on Frame Skipping.
+
+* Module: NetFix
+	- When attaching a debugger to Outpost2.exe, the NetFix log file will be created in the debugging working directory instead of Outpost 2's working directory.
+
+* Scenario: Evacuation Under Fire
+	- Sometimes, after clicking on a garage and clicking (s)torage, Outpost 2 will crash. The bug persists across saving/loading. Appears to be a problem with the game engine and not the scenario. To avoid the bug, recommend the player evacuates all units from the garages before first save of the scenario.
+
+* Scenario: 4P, SRV, Forsaken World
+	- Some starting colonies begin with buildings intermingled with what should be impassible terrain. One colony cannot access its starting ore deposit.
+
+* Scenario: Plymouth Cold War
+	- Attacking the AI base often creates a crashing bug soon after initial engagement.
+
+* Scenario: 5P, SRV, Fractured Alliance
+	- Occasionally the scenario will crash on initial load.
+
+
+Placing Outpost 2 in the Windows Program Files Directory
+--------------------------------------------------------
+
+On Windows Vista or newer versions of Windows, if the Outpost 2 game files are placed in Program Files directory, files generated or modified by Outpost2.exe will be created at a virtual location via User Account Control (UAC) Virtualization. The affected files are:
+
+* Outpost2.ini
+* Saved game files (.op2)
+* Log files
+
+The generated or modified versions of these files can be found at "C:\Users\username\AppData\Local\VirtualStore\Program Files\appname" where app name is likely Outpost2.
+
+The Outpost Universe distributed copy of Outpost 2 does not require placement in the Program Files directory to work. To avoid confusion with UAC, consider placing Outpost 2 game files outside of the protected Program Files directory.
+
+
+Changelog
+---------
+
+1.3.8
+	* Updated NetHelper to version 1.5.3
+		- Updated to newer versions of libnatpmp and miniupnp.
+		- Cut down cleanup/destruction on application closing from 3 mins to 8 secs.
+		- Removed dependencies on msvcr100.dll and msvcp100.dll by statically compiling.
+		- Removed use of deprecated POSIX networking functions.
+	* Updated op2ext to version 2.2.0 (Version 2.1.0 and 2.2.0 changes listed below)
+		- Allow passing module directories with the /loadmod switch when the directory contains multiple spaces in a row ("  ")
+		- Allow modules to detect which ini and console modules have been loaded via op2ext. (See op2ext.h for new function declarations). May be called from external modules written in C or C++.
+		- Ensure the log file is always created in the game directory. Earlier, the log file was created in the working environment, which could differ from the game directory, such as when attaching a debugger.
+		- If a module fails to load, provide more details to the user
+		- Fix bug in GetGameDir_s that may throw an exception if a buffer length of 0 is passed in as an argument
+		- Fix bug in Console Mod Loader that separated the executable's path into multiple arguments when a space was included.
+		- Add message logger usable by op2ext and external modules.
+		- Deprecate GetCurrentModDir due to improper memory management across DLL boundaries.
+		- Add external API function GetConsoleModDir_s to replace deprecated GetCurrentModDir.
+		- Mark the argument volName from function AddVolToList as constant (const). This allows passing constant values into the function.
+		- Lift the 31 volume file load restriction. Outpost 2 can now load an unlimited number of volumes.
+	* Updated Mission Evacuation Under Fire to Version 1.0.1
+		- Move HFLInit from InitProc to DLLMain, allowing HFL initialization when loading a saved game
+	* Update Mission On the Run to Version 1.0.2
+		- Fix bug when an initial vehicle is destroyed that prevents resolving the patch all vehicles victory condition.
+	* Update Mission Rescue Escort to Version 1.1.1
+		- Improved source code readability and cross platform compatibility for compiling.
+	* Update mission Rising From the Ashes to version 1.0.7
+		- Stop player from being able to build lava walls (Tech file update)
+		- Move HFLInit from InitProc to DLLMain, allowing HFL initialization when loading a saved game
+	* Add mission Yukon Trail (4P, RR), Brett208
+
+1.3.7
+	* Updated op2ext.dll to version 2.0.0.
+		- Allows Outpost 2 to load vol files with any name added to the game directory.
+		- Allows loading .ini properties into op2ext.dll that exceed 1024 characters.
+		- Provides bug fixes, security improvements, and improved error reporting to op2ext.dll.
+	* Restructured vol file organization. Now art.vol, maps.vol, and tech.vol.
+	* Replaced Outpost 2 specific wells (tile sets) with standard BMP files.
+	* Updated tech tree dtek_e.txt so Pre Release Eden Demo can be beaten.
+	* Removed Punwick Junction (four players, Last One Standing) DLL.
+	* Updated survtech.txt, the tech tree used by Forsaken World (4P, SRV), by sirbomber.
+	* Added scenario Bomber's Big Blast (4P, LoS), sirbomber.
+	* Added scenario Hidden Treasure (4P, LoS), Flashy.
+	* Added scenario Caught in the Crossfire (4P, SRV), Mcshay.
+	* Added scenario Darkest Hour (4P, SRV), sirbomber.
+	* Added scenario Danger Zone (5P, SRV), Flashy.
+	* Added scenario Fractured Alliance (5P, SRV), by sirbomber.
+	* Added scenario Judgement Day (6P, SRV), by sirbomber.
+	* Added scenario Outcaster's Starship (Colony Game, Starship), by Lord of Pain, ECC, & Flashy.
+	* Added scenario Rising From the Ashes (Colony Game, Starship), by Brett208
+	* Added scenario Campaign - Ply, Pursued, Ep 1 - Evac Under Fire (Colony Game), by Brett208
+	* Added scenario Campaign - Ply, Pursued, Ep 2 - On the Run (Colony Game), by Brett208
+	* Added scenario Campaign - Ply, Pursued, Ep 3 - Rescue Escort (Colony Game), by Brett208
+	* Added scenario Rescue Escort (2P, Convoy), by Brett208 (Under Land Rush Section)
+
+1.3.6
+	* Disabled Help button on main menu as it no longer works on modern versions of Windows.
+	* Added NetHelper add-on to make joining/creating multiplayer games easier.
+	* Updated executable Icon file.
+	* Updated version strings throughought the executable and various extension DLL's.
+
+1.3.5 Beta2
+	* Fixed option button highlighting bug in odasl.dll
+	* Applied Meteor Defense patch, so it will never fail to fire (but can still miss)
+	* Fixed wreckage bug, where wreckage sometimes got picked up as rubble (fixed the rubble checking code)
+	* Upgraded op2ext.dll to support loading multiple mods through Outpost2.ini
+	* Included updated NetFix, and associated Outpost2.ini settings (using new module loading system)
+	* Swapped centering behavior of <number> and Shift+<number> (unit group hotkeys)
+
+1.3.5 Beta1
+	* Minimap scroll fix (no longer gets caught on top and bottom for full sized maps, but can still get caught on sides of undersized maps)
+	* Network game speed fix, so it attempts to play at the set speed rather than gradually slowing to half that speed
+	* Applied hard unit limit increase patch (1023 -> 2047 max units)
+	* Applied soft unit limit table updates: (Changed when the build buttons dissapear)
+		- NumPlayers    1     2     3     4     5     6
+		- Vehicles  { 400,  320,  230,  180,  154,  130} (per player)
+		- Buildings { 950,  350,  200,  150,  100,   96} (per player)
+		-           ------------------------------------
+		- Units     {1350,  670,  430,  330,  254,  226} (per player) [Vehicles + Buildings]
+		- Total     {1350, 1340, 1290, 1320, 1270, 1356} (for all players)  [Units Per Player * Number Of Players]
+		- Gaia      { 697,  707,  757,  727,  777,  691} (space left for non-player units) [approx.]  [*Weapons fire* (twice as many combat units now?), Beacons, Fumaroles, Disasters]
+
+1.3.4 r2	OPU5 updates / bugfixes
+	* Problem with 1.3.4 loading on Windows 9x fixed.
+	* Problem with NAT fix resolved.
+	* Zone Control / The Hunters maps removed until numerous bugs in them can be dealt with.
+
+1.3.4		OPU5 updates
+	* The update was recompiled from scratch, using a CD based install.
+	* The music will not cut out when switching to another application.
+	* Made the IP address setting the default when loading the "Find Session" dialog box when joining a TCP/IP game. Also, set initial focus to the text entry box for the IP address.
+	* Changed the IP entry field to a drop down list that stores the 10 most recently entered addresses.
+	* Added support for multiple language versions of Outpost 2.
+	* Improved the NAT fix so configuration is no longer necessary. (Apart from port forwarding)
+	* Added support for custom modifications with a /loadmod parameter to Outpost2.exe.
+	* Added support for loading extra VOLs from an Addon\ folder for new tileset packs, map packs, etc.
+	* The single player maps had I2 cell type added on top of cliffs where building should not be possible.
+
+1.2.8 - 1.3.3	OPU1 - OPU4 update packages
+	* Prompting for a CD is disabled (unless the game can't find its files in the game directory)
+	* OP2 will load in the normal windowed mode (instead of being forced to 640x480 if the screen depth is not 16 bit)
+	* The "Dan's" cheats are disabled permanently.
+	* The "Version" text on the in-game menu has been changed to "OPU Ver:" to make it more obvious that the game has been edited by OPU.
+	* The About screen has been amended to include a note stating that the game has been edited by OPU.
+	* The game is no longer dependent on helphook.dll. (No ill effects happen by removing this DLL, and it reduces the overall game size)
+	* The capitalization on the status bar has been removed.
+	* The internal game version number is updated to prevent old version of the game from joining OPU versions, as well as for clarity of updates. (For the user to identify which version they have)
+	* Forced the game to load a new DLL, op2ext.dll, for extra OPU patches.
+	* Included an NAT fix that allowed people to host from behind a router (with proper port forwarding)
+	* Segmented maps.vol into maps.vol, and maps01-04.vol to allow for easier updates to the maps.vol files in the future.
+	* Decompressed the text files inside sheets.vol, as well as set the Owner field on all units to B, enabling them to be available to either player through the use of custom techtrees.
+	* Changed the version info on the mission DLLs to specify the name of the level in the version info, rather than just some obscure text "Outpost 2 Mission DLL".
+	* Slight modification to the Pie Chart map to make it more fair.
+
+1.2.5 - 1.2.7	Sierra official releases (CD version + 3 scenario packs)
+	* No changes made by OPU.
